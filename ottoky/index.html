@@ -59,9 +59,14 @@
       .file-list {
         display: grid;
         gap: 10px;
-        margin: 0;
+        margin: 0 0 28px;
         padding: 0;
         list-style: none;
+      }
+
+      h2 {
+        margin: 26px 0 12px;
+        font-size: 1.15rem;
       }
 
       .file-link {
@@ -127,9 +132,26 @@
       <header>
         <h1>Ottoky</h1>
         <p>Escolha um arquivo XML para baixar.</p>
-        <p class="hint">No tablet, depois de baixar, abra o TokyLabs e use Open Block &gt; Downloads para selecionar o arquivo .xml.</p>
+        <p class="hint">No tablet Samsung, use primeiro a lista com nomes simples. Depois de baixar, abra o TokyLabs e use Open Block &gt; Downloads.</p>
       </header>
 
+      <h2>Tablet Samsung</h2>
+      <ul class="file-list">
+        <li><a class="file-link" href="calibrar.xml" download="calibrar.xml"><span class="file-name">calibrar.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase1.xml" download="fase1.xml"><span class="file-name">fase1.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase2.xml" download="fase2.xml"><span class="file-name">fase2.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase3.xml" download="fase3.xml"><span class="file-name">fase3.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase4.xml" download="fase4.xml"><span class="file-name">fase4.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase5.xml" download="fase5.xml"><span class="file-name">fase5.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase6.xml" download="fase6.xml"><span class="file-name">fase6.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase7.xml" download="fase7.xml"><span class="file-name">fase7.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase8.xml" download="fase8.xml"><span class="file-name">fase8.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="fase9.xml" download="fase9.xml"><span class="file-name">fase9.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="passaro.xml" download="passaro.xml"><span class="file-name">passaro.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="personagem.xml" download="personagem.xml"><span class="file-name">personagem.xml</span><span class="download">Baixar</span></a></li>
+      </ul>
+
+      <h2>Arquivos originais</h2>
       <ul class="file-list">
         <li><a class="file-link" href="Calibrando.xml" download="Calibrando.xml"><span class="file-name">Calibrando.xml</span><span class="download">Baixar</span></a></li>
         <li><a class="file-link" href="otokky_bird.xml" download="otokky_bird.xml"><span class="file-name">otokky_bird.xml</span><span class="download">Baixar</span></a></li>
@@ -165,7 +187,7 @@
             }
 
             const text = await response.text();
-            const blob = new Blob([text], { type: "application/xml" });
+            const blob = new Blob([text], { type: "text/xml" });
             const blobUrl = URL.createObjectURL(blob);
             const downloadLink = document.createElement("a");
 
