@@ -50,6 +50,12 @@
         font-size: 1rem;
       }
 
+      .hint {
+        max-width: 680px;
+        margin-top: 12px;
+        line-height: 1.45;
+      }
+
       .file-list {
         display: grid;
         gap: 10px;
@@ -121,22 +127,59 @@
       <header>
         <h1>Ottoky</h1>
         <p>Escolha um arquivo XML para baixar.</p>
+        <p class="hint">No tablet, depois de baixar, abra o TokyLabs e use Open Block &gt; Downloads para selecionar o arquivo .xml.</p>
       </header>
 
       <ul class="file-list">
-        <li><a class="file-link" href="Calibrando.xml" download><span class="file-name">Calibrando.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="otokky_bird.xml" download><span class="file-name">otokky_bird.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="otokky_personagem.xml" download><span class="file-name">otokky_personagem.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_1.xml" download><span class="file-name">sesc_fase_1.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_2.xml" download><span class="file-name">sesc_fase_2.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_3.xml" download><span class="file-name">sesc_fase_3.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_4.xml" download><span class="file-name">sesc_fase_4.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_5.xml" download><span class="file-name">sesc_fase_5.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_6.xml" download><span class="file-name">sesc_fase_6.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_7.xml" download><span class="file-name">sesc_fase_7.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_8.xml" download><span class="file-name">sesc_fase_8.xml</span><span class="download">Baixar</span></a></li>
-        <li><a class="file-link" href="sesc_fase_9.xml" download><span class="file-name">sesc_fase_9.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="Calibrando.xml" download="Calibrando.xml"><span class="file-name">Calibrando.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="otokky_bird.xml" download="otokky_bird.xml"><span class="file-name">otokky_bird.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="otokky_personagem.xml" download="otokky_personagem.xml"><span class="file-name">otokky_personagem.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_1.xml" download="sesc_fase_1.xml"><span class="file-name">sesc_fase_1.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_2.xml" download="sesc_fase_2.xml"><span class="file-name">sesc_fase_2.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_3.xml" download="sesc_fase_3.xml"><span class="file-name">sesc_fase_3.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_4.xml" download="sesc_fase_4.xml"><span class="file-name">sesc_fase_4.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_5.xml" download="sesc_fase_5.xml"><span class="file-name">sesc_fase_5.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_6.xml" download="sesc_fase_6.xml"><span class="file-name">sesc_fase_6.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_7.xml" download="sesc_fase_7.xml"><span class="file-name">sesc_fase_7.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_8.xml" download="sesc_fase_8.xml"><span class="file-name">sesc_fase_8.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_9.xml" download="sesc_fase_9.xml"><span class="file-name">sesc_fase_9.xml</span><span class="download">Baixar</span></a></li>
       </ul>
     </main>
+
+    <script>
+      document.querySelectorAll(".file-link").forEach((link) => {
+        link.addEventListener("click", async (event) => {
+          if (!("download" in HTMLAnchorElement.prototype) || !window.URL) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const fileName = link.getAttribute("download");
+
+          try {
+            const response = await fetch(link.href);
+
+            if (!response.ok) {
+              throw new Error("Download failed");
+            }
+
+            const text = await response.text();
+            const blob = new Blob([text], { type: "application/xml" });
+            const blobUrl = URL.createObjectURL(blob);
+            const downloadLink = document.createElement("a");
+
+            downloadLink.href = blobUrl;
+            downloadLink.download = fileName;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            URL.revokeObjectURL(blobUrl);
+          } catch (error) {
+            window.location.href = link.href;
+          }
+        });
+      });
+    </script>
   </body>
 </html>
