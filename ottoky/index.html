@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ottoky - Downloads XML</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f2e8;
+        --panel: #ffffff;
+        --text: #1f2933;
+        --muted: #667085;
+        --accent: #0057b8;
+        --accent-dark: #003f87;
+        --border: #d9dee7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      main {
+        width: min(920px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+
+      header {
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .file-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .file-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 58px;
+        padding: 14px 16px;
+        color: inherit;
+        text-decoration: none;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+
+      .file-link:hover,
+      .file-link:focus-visible {
+        border-color: var(--accent);
+        outline: none;
+      }
+
+      .file-name {
+        overflow-wrap: anywhere;
+        font-weight: 700;
+      }
+
+      .download {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        color: #ffffff;
+        background: var(--accent);
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 700;
+      }
+
+      .file-link:hover .download,
+      .file-link:focus-visible .download {
+        background: var(--accent-dark);
+      }
+
+      @media (max-width: 520px) {
+        main {
+          width: min(100% - 24px, 920px);
+          padding: 32px 0;
+        }
+
+        .file-link {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .download {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Ottoky</h1>
+        <p>Escolha um arquivo XML para baixar.</p>
+      </header>
+
+      <ul class="file-list">
+        <li><a class="file-link" href="Calibrando.xml" download><span class="file-name">Calibrando.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="otokky_bird.xml" download><span class="file-name">otokky_bird.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="otokky_personagem.xml" download><span class="file-name">otokky_personagem.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_1.xml" download><span class="file-name">sesc_fase_1.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_2.xml" download><span class="file-name">sesc_fase_2.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_3.xml" download><span class="file-name">sesc_fase_3.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_4.xml" download><span class="file-name">sesc_fase_4.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_5.xml" download><span class="file-name">sesc_fase_5.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_6.xml" download><span class="file-name">sesc_fase_6.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_7.xml" download><span class="file-name">sesc_fase_7.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_8.xml" download><span class="file-name">sesc_fase_8.xml</span><span class="download">Baixar</span></a></li>
+        <li><a class="file-link" href="sesc_fase_9.xml" download><span class="file-name">sesc_fase_9.xml</span><span class="download">Baixar</span></a></li>
+      </ul>
+    </main>
+  </body>
+</html>
